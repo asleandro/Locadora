@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Locadora</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="descricao_furadeira_impacto">Executa furos em madeira, metal e alvenaria.
+A furadeira de impacto capaz de realizar tarefas com precisão e com pouco esforço físico do operador</string>
+    <string name="furadeira_impacto">Furadeira de impacto</string>
+    <string name="aparador_de_cerca">Aparador de cerca viva</string>
+    <string name="descricao_aparador_de_cerca">Utilizado para aparar cercas vivas, "eras", sebes e arbustos, que tenham galhos com diâmetro menor que 1 cm.</string>
+    <string name="Valor_aluguel">Valor do aluguel: R$ </string>
+</resources>
