@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.example.locadora.MainActivity;
 import com.example.locadora.R;
 import com.example.locadora.adapter.FerramentasAdapter;
 import com.example.locadora.model.Produto;
@@ -19,6 +22,7 @@ import com.example.locadora.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,44 +35,24 @@ public class FerramentasFragment extends Fragment {
     private RecyclerView recyclerView;
     private FerramentasAdapter adapter;
     private Usuario usuario;
-
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private SearchView searchView;
 
     public FerramentasFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static FerramentasFragment newInstance(Usuario usuario){
+    public static FerramentasFragment newInstance(Usuario usuario) {
         FerramentasFragment fragment = new FerramentasFragment();
         fragment.usuario = usuario;
         return fragment;
     }
 
-    /*public static FerramentasFragment newInstance(String param1, String param2) {
-        FerramentasFragment fragment = new FerramentasFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }*/
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
     }
 
     @Override
@@ -76,6 +60,22 @@ public class FerramentasFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ferramentas, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
+        searchView = view.findViewById(R.id.searchView);
+        recyclerView.setHasFixedSize(true);
+
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtrarLista(newText);
+                return false;
+            }
+        });
 
         Produto p1 = new Produto("Furadeira de impacto", "Executa furos em madeira, metal e alvenaria.\n" +
                 "A furadeira de impacto capaz de realizar tarefas com precisão e com pouco esforço físico do operador",
@@ -90,9 +90,9 @@ public class FerramentasFragment extends Fragment {
         Produto p5 = new Produto("Esquadrilhadeira", "Também conhecida como Serra Esquadria, é um equipamento" +
                 "prático para trabalhos pesados de corte", 195.50, R.drawable.esquadrilhadeira);
         Produto p6 = new Produto("Cortadora de grama elétrica", "Indicada para o corte de grama e capim" +
-                "com baixa altura." , 120.45, R.drawable.cortador_grama);
+                "com baixa altura.", 120.45, R.drawable.cortador_grama);
         Produto p7 = new Produto("Cortadora de grama gasolina", "Indicada para o corte de grama e capim" +
-                "com baixa altura." , 165.65, R.drawable.cortador_grama_gasolina);
+                "com baixa altura.", 165.65, R.drawable.cortador_grama_gasolina);
 
         produtos = new ArrayList<>();
         produtos.add(p1);
@@ -110,5 +110,18 @@ public class FerramentasFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
 
         return view;
+    }
+
+    private void filtrarLista(String newText) {
+        List<Produto> listaFiltrada = new ArrayList<>();
+        for (Produto produto : produtos) {
+            if (produto.getNome().toLowerCase().contains(newText.toLowerCase())) {
+                listaFiltrada.add(produto);
+            }
+        }
+        if (!listaFiltrada.isEmpty()) {
+            adapter.filtrarLista(listaFiltrada);
+        } else Toast.makeText(getActivity(), "nenhum resultado encontrado", Toast.LENGTH_SHORT).show();
+
     }
 }

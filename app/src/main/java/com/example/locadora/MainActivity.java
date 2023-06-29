@@ -4,19 +4,28 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.locadora.adapter.ImagePageAdapter;
 import com.example.locadora.fragmentos.CarrinhoFragment;
+import com.example.locadora.fragmentos.CarrinhoVazioFragment;
 import com.example.locadora.fragmentos.FerramentasFragment;
 import com.example.locadora.fragmentos.HomeFragment;
 import com.example.locadora.fragmentos.LoginFragment;
+import com.example.locadora.model.Produto;
 import com.example.locadora.model.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     Fragment selectedFragment = null;
     Usuario usuario = new Usuario();
+    List<Produto> carrinho = new ArrayList<>();
+    ImagePageAdapter imagePageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,11 @@ public class MainActivity extends AppCompatActivity {
                 selectedFragment = FerramentasFragment.newInstance(usuario);
             }
             if (item.getItemId() == R.id.menu_carrinho) {
-                selectedFragment = new CarrinhoFragment();
+                if(usuario.getCarrinho().isEmpty()){
+                    selectedFragment = new CarrinhoVazioFragment();
+                }
+                else selectedFragment = CarrinhoFragment.newInstance(usuario, usuario.getCarrinho());
+                //selectedFragment = new CarrinhoFragment();
             }
             if (item.getItemId() == R.id.menu_login) {
                 selectedFragment = new LoginFragment();
