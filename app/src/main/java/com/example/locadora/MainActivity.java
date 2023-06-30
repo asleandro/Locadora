@@ -2,6 +2,7 @@ package com.example.locadora;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -55,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
         });
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
 
+    }
+
+    public void atualizarTituloAppBar(String titulo) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(titulo);
+        }
     }
 
 }

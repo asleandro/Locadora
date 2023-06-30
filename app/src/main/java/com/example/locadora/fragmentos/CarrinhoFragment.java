@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.locadora.MainActivity;
 import com.example.locadora.R;
 import com.example.locadora.adapter.CarrinhoAdapter;
 import com.example.locadora.model.Produto;
@@ -55,13 +56,8 @@ public class CarrinhoFragment extends Fragment {
 
         somaValorTotal();
 
-        // está dando problema pq carrinho está null.
-        System.out.println(!carrinho.isEmpty());
-        /*if (!carrinho.isEmpty()) {
-            for (Produto produto : carrinho) {
-                valorTotal += produto.getValor();
-            }
-        }*/
+        MainActivity activity = (MainActivity) getActivity();
+        activity.atualizarTituloAppBar("Ferramentas");
 
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setDecimalSeparator(',');

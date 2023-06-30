@@ -82,13 +82,6 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
         holder.nomeProduto.setText(produto.getNome());
         holder.textoValorDoAluguel.setText("Valor do aluguel: R$");
         holder.getImagemProduto().setImageResource(produto.getImagemId());
-
-        /*double preco = produto.getValorFormatado(produto.getValor());
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
-        symbols.setDecimalSeparator(',');
-        symbols.setGroupingSeparator('.');
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", symbols);
-        String precoFormatado = decimalFormat.format(preco);*/
         holder.precoProduto.setText(produto.getValorFormatado(produto.getValor()));
 
         holder.removerCarrinho.setOnClickListener(new View.OnClickListener() {

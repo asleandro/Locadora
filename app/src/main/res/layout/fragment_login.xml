@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
     tools:context=".fragmentos.LoginFragment">
 
     <ImageView
@@ -14,14 +15,11 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_margin="16dp"
-        android:src="@drawable/perfil_circulo" />
+        android:src="@drawable/img_perfil" />
 
     <EditText
         android:id="@+id/user_name"
-        app:layout_constraintEnd_toEndOf="@+id/imagem_perfil"
-        app:layout_constraintStart_toStartOf="@+id/imagem_perfil"
-        app:layout_constraintTop_toBottomOf="@+id/imagem_perfil"
-        android:layout_width="379dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/edit_bg"
@@ -29,8 +27,9 @@
         android:inputType="text"
         android:padding="24dp"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="136dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagem_perfil" />
 
     <EditText
         android:id="@+id/senha"
@@ -72,7 +71,7 @@
         android:layout_margin="16dp"
         android:text="Não possui um cadatro? Crie uma conta"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/terra_claro"
         android:textStyle="italic"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="434dp" />

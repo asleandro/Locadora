@@ -4,24 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/cardview_dark_background"
     tools:context=".fragmentos.HomeFragment">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aluguel de ferramentas e equipamentos"
+            android:textColor="@color/terra"
+            android:textSize="28dp"
+            android:layout_marginLeft="8dp"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Bem-vindo ao Aluguel de Ferramentas"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_margin="8dp"
-        tools:ignore="HardcodedText" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Bem-vindo ao app Conmaker"
+            android:textColor="@color/terra"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="16dp"
+            tools:ignore="HardcodedText" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_margin="8dp"
+        android:layout_marginBottom="10dp"
+        android:layout_margin="16dp"
+        android:textColor="@color/terra_claro"
         android:text="Encontre as ferramentas que você precisa para a sua obra."
         android:textSize="18sp"
         tools:ignore="HardcodedText" />
@@ -30,10 +55,12 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="10dp"
         android:text="Destaques"
+        android:textColor="@color/terra"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        tools:ignore="HardcodedText" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -42,9 +69,20 @@
         android:layout_marginBottom="16dp"
         android:layout_margin="8dp"
         android:background="@drawable/search_view_bg"
+        android:backgroundTint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" >
 
     </androidx.viewpager.widget.ViewPager>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textColor="@color/terra_claro"
+        android:text="Temos diversas lojas distribuídas pela cidade. Encontre a mais próxima de você" />
 
 
 </LinearLayout>
